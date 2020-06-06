@@ -17,7 +17,12 @@ a:hover {
     text-decoration: none;
     cursor: pointer;
 }
-
+#temoignage{
+    font-size: 22px ;
+}
+#temoignage label{
+    font-size: 15px;
+}
 #page-loading-blocs-notifaction {
     position: fixed;
     top: 0;
