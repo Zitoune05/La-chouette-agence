@@ -1,0 +1,57 @@
+# GZIP Apache 2.0
+SetOutputFilter DEFLATE
+AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/x-javascript
+
+# BEGIN GZIP
+SetOutputFilter DEFLATE
+AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/x-javascript
+
+BrowserMatch ^Mozilla/4 gzip-only-text/html
+BrowserMatch ^Mozilla/4\.0[678] no-gzip
+BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+BrowserMatch \bMSI[E] !no-gzip !gzip-only-text/html
+# END GZIP
+
+# CACHE NAVIGATEUR
+# BEGIN Cache-Control Headers
+<IfModule mod_headers.c>
+ <FilesMatch "\.(ico|jpe?g|png|gif|swf|css|gz)$">
+ Header set Cache-Control "max-age=2592000, public"
+ </FilesMatch>
+ <FilesMatch "\.(js)$">
+ Header set Cache-Control "max-age=2592000, private"
+ </FilesMatch>
+<filesMatch "\.(html|htm)$">
+Header set Cache-Control "max-age=7200, public"
+</filesMatch>
+# Enleve le cache pour les ressources dynamiques
+<FilesMatch "\.(pl|php|cgi|spl|scgi|fcgi)$">
+Header unset Cache-Control
+</FilesMatch>
+</IfModule>
+# END Cache-Control Headers
+
+<IfModule mod_expires.c>
+  ExpireActif le
+
+  # Images
+  ExpiresByType image / jpeg "accès plus 1 an"
+  ExpiresByType image / gif "accès plus 1 an"
+  ExpiresByType image / png "accès plus 1 an"
+  ExpiresByType image / webp "accès plus 1 an"
+  ExpiresByType image / svg + xml "accès plus 1 an"
+  ExpiresByType image / x-icon "accès plus 1 an"
+
+  # Vidéo
+  ExpiresByType video / mp4 "access plus 1 year"
+  ExpiresByType video / mpeg "access plus 1 year"
+
+  # CSS, JavaScript
+  ExpiresByType text / css "access plus 1 month"
+  ExpiresByType texte / javascript "accès plus 1 mois"
+  ExpiresByType application / javascript "accès plus 1 mois"
+
+  # Autres
+  ExpiresByType application / pdf "accès plus 1 mois"
+  ExpiresByType application / x-shockwave-flash "accès plus 1 mois"
+</IfModule>
