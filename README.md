@@ -1,4 +1,4 @@
-# Projet 3 - Optimisez un site web existant
+# Projet 3 - Optimiser un site web existant
 
 Compétences évaluées :
 - Écrire un code HTML et CSS maintenable 
